@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { Logo } from "../logo-component/logo";
+import { Logo } from "../../logo-component/logo";
 import { Sansita_Swashed } from "next/font/google";
 
 const sansita = Sansita_Swashed({
