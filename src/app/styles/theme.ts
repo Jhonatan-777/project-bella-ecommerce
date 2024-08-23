@@ -4,10 +4,11 @@ export const theme = {
     white: "#ffffff",
     black: "#1C1C1C",
 
-    bgInput: "#fffff0", //cream
+    bgInput: "#FAFAF4", //cream
 
     neutralColorLight: "#cecece", //gray light
-    neutralColor: "#393939", //gray
+    neutralColor: "#7c7c7c", //gray
+    neutralColorStrong: "#393939", //gray strong
 
     attention: "#851630", //red
 
