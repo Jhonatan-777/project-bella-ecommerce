@@ -1,13 +1,11 @@
 "use client";
 
 import styled from "styled-components";
-import { Logo } from "../../logo-component/logo";
-import { Sansita_Swashed } from "next/font/google";
 
-const sansita = Sansita_Swashed({
-  weight: ["700"],
-  subsets: ["latin"],
-});
+import Logo from "@/components/logo-component/logo";
+import Advantages from "../header-additional/advantages/advantages-a";
+import Offer from "../header-additional/offer/offer-a";
+import PrimaryInputSearch from "./input/primary-input";
 
 interface HeaderProps {}
 
@@ -19,49 +17,11 @@ const TagHeader = styled.header`
   flex-direction: column;
 `;
 
-const ContainerOffer = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-
-  background-color: ${({ theme }) => theme.colors.attention};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.fontSizes.s};
-`;
-
-const ContainerAdvantages = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-
-  background: ${({ theme }) => theme.colors.neutralColorLight};
-  color: ${({ theme }) => theme.colors.neutralColor};
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-
-  ul {
-    width: 90%;
-
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-
-    list-style: none;
-  }
-`;
-
 const ContainerHeader = styled.div`
   width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #c5bbbb;
 
   padding: 10px;
 `;
@@ -69,27 +29,11 @@ const ContainerHeader = styled.div`
 export function Header(props: HeaderProps) {
   return (
     <TagHeader>
-      <ContainerOffer>
-        <a href="#">
-          12% OFF em TODO o Site + Frete GRÁTIS, cupom: PRIMEIRACOMPRA.
-          Condições em promoções
-        </a>
-      </ContainerOffer>
-      <ContainerAdvantages>
-        <ul>
-          <li>Frete grátis*</li>
-          <li>Troca grátis</li>
-          <li>Coleta para trocas</li>
-          <li>Até 10x sem juros</li>
-          <li>Entrega rápida</li>
-          <li>Moda Sustentável</li>
-          <li>Atendimento</li>
-        </ul>
-      </ContainerAdvantages>
+      <Offer />
+      <Advantages />
       <ContainerHeader>
-        <Logo className={sansita.className}>
-          Bell<span>a</span>
-        </Logo>
+        <Logo />
+        <PrimaryInputSearch />
       </ContainerHeader>
     </TagHeader>
   );
