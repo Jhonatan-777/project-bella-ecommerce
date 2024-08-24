@@ -1,6 +1,12 @@
 // "use client";
+import { Poppins } from "next/font/google";
 
 import styled from "styled-components";
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 const ContainerAdvantages = styled.div`
   width: 100%;
@@ -29,7 +35,7 @@ const ContainerAdvantages = styled.div`
 export default function Advantages() {
   return (
     <ContainerAdvantages>
-      <ul>
+      <ul className={poppins.className}>
         <li>Frete grátis*</li>
         <li>Troca grátis</li>
         <li>Coleta para trocas</li>

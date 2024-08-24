@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Poppins } from "next/font/google";
 
 //item do sub menu de header
 import Season from "./sub-menu-item/item-1-season";
@@ -9,6 +10,11 @@ import Childish from "./sub-menu-item/item-5-childish";
 import Sporty from "./sub-menu-item/item-6-sporty";
 import Marks from "./sub-menu-item/item-7-marks";
 import Outlet from "./sub-menu-item/item-8-outlet";
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 const ContainerList = styled.ul`
   width: 90%;
@@ -22,7 +28,7 @@ const ContainerList = styled.ul`
 
 export default function SubMenu() {
   return (
-    <ContainerList>
+    <ContainerList className={poppins.className}>
       <Season />
       <News />
       <Feminine />
