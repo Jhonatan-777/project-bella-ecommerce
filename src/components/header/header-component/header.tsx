@@ -6,6 +6,7 @@ import Logo from "@/components/logo-component/logo";
 import Advantages from "../header-additional/advantages/advantages-a";
 import Offer from "../header-additional/offer/offer-a";
 import PrimaryInputSearch from "./input/primary-input";
+import ObserveRegister from "./header-observe/headerObserve";
 
 interface HeaderProps {}
 
@@ -23,7 +24,7 @@ const ContainerHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  padding: 10px;
+  padding: 15px;
 `;
 
 export function Header(props: HeaderProps) {
@@ -34,6 +35,7 @@ export function Header(props: HeaderProps) {
       <ContainerHeader>
         <Logo />
         <PrimaryInputSearch />
+        <ObserveRegister />
       </ContainerHeader>
     </TagHeader>
   );
