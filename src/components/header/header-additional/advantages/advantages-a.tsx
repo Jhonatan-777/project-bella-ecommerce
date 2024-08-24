@@ -8,7 +8,7 @@ const ContainerAdvantages = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 10px 0;
 
   background: ${({ theme }) => theme.colors.neutralColorLight};
   color: ${({ theme }) => theme.colors.neutralColor};
