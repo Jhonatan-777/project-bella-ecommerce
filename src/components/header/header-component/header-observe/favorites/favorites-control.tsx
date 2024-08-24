@@ -1,5 +1,6 @@
 import { FavoriteIcon } from "@/components/ui/icons/favorite-icon";
 import { useLocalStorage } from "@/data/hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -30,6 +31,16 @@ const FavoriteCount = styled.span`
 
 export function FavoritesControl() {
   const [value] = useLocalStorage<string[]>("favorites-items", []);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Evita renderizar no lado do servidor
+    return null;
+  }
 
   return (
     <Container>

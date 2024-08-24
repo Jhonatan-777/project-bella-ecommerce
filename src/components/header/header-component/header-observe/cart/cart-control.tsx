@@ -1,5 +1,6 @@
 import { CartIcon } from "@/components/ui/icons/cart-icon";
 import { useLocalStorage } from "@/data/hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -30,6 +31,16 @@ const CartCount = styled.span`
 
 export function CartControl() {
   const [value] = useLocalStorage<string[]>("cart-items", []);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Evita renderizar no lado do servidor
+    return null;
+  }
 
   return (
     <Container>
