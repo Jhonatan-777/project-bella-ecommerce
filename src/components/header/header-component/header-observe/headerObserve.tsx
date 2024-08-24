@@ -3,10 +3,12 @@
 import styled from "styled-components";
 import HeaderAuth from "./auth/auth";
 import HeaderFavorites from "./favorites/favorites";
+import HeaderCart from "./cart/cart";
 
 const ContainerHeaderObserve = styled.div`
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 50px;
 `;
 
 export default function ObserveRegister() {
@@ -14,7 +16,7 @@ export default function ObserveRegister() {
     <ContainerHeaderObserve>
       <HeaderAuth />
       <HeaderFavorites />
-      {/* <Cart /> */}
+      <HeaderCart />
     </ContainerHeaderObserve>
   );
 }

@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import styled from "styled-components";
-import { FavoritesControl } from "./favorites-control";
+import { CartControl } from "./cart-control";
 
-const ContainerHeaderFavorites = styled.div`
+const ContainerHeaderCart = styled.div`
   a {
     display: flex;
-    gap: 4px;
+    gap: 2px;
     line-height: 20px;
 
     color: ${({ theme }) => theme.colors.neutralColorStrong};
@@ -15,13 +15,13 @@ const ContainerHeaderFavorites = styled.div`
   }
 `;
 
-export default function HeaderFavorites() {
+export default function HeaderCart() {
   return (
-    <ContainerHeaderFavorites>
+    <ContainerHeaderCart>
       <Link href="#">
-        favoritos
-        <FavoritesControl />
+        sacola
+        <CartControl />
       </Link>
-    </ContainerHeaderFavorites>
+    </ContainerHeaderCart>
   );
 }

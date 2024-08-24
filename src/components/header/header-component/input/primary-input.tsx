@@ -1,7 +1,7 @@
 // "use client";
 
 import styled from "styled-components";
-import { SearchIcon } from "../../../ui/icons/search-icon";
+import { SearchIcon } from "@/components/ui/icons/search-icon";
 
 const InputContainer = styled.div`
   position: relative;
