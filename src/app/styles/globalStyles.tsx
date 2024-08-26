@@ -1,7 +1,18 @@
+import { Poppins } from "next/font/google";
+
 // globalStyles.tsx
 import { createGlobalStyle } from "styled-components";
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --font-title: ${poppins.style.fontFamily};
+  }
+  
   * {
     box-sizing: border-box;
     padding: 0;
