@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import banner from "@/app/assets/images/BannerMain.png";
+import banner from "@/app/assets/images/banner-main-n.png";
 
 import styled from "styled-components";
 import { flex, limitWidth } from "@/app/styles/mixins";

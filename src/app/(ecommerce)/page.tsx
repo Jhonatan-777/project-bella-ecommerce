@@ -1,6 +1,7 @@
 "use client";
 
 import BannerMain from "@/components/banners/banner-main/BannerMain";
+import BannersSubMain from "@/components/banners/banners-sub-main/BannerSubMain";
 import styled from "styled-components";
 
 const ContainerSections = styled.div`
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <ContainerSections>
       <BannerMain />
+      <BannersSubMain />
     </ContainerSections>
   );
 }
