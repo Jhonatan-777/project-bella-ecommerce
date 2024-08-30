@@ -9,7 +9,8 @@ interface CardSubMain {
   href: string;
   title: string;
   imageAlt: string;
-  imageSrc: StaticImageData;
+  imageSrc: StaticImageData | string;
+  position?: string;
 }
 
 const Card = styled.div`
@@ -58,6 +59,7 @@ export default function CardSubMain({
   title,
   imageAlt,
   imageSrc,
+  position,
 }: CardSubMain) {
   return (
     <Card>
@@ -72,7 +74,7 @@ export default function CardSubMain({
             width: "100%",
             height: "auto",
             objectFit: "cover",
-            objectPosition: "top",
+            objectPosition: position,
           }}
         />
         <span className="bannerCardButton">confira agora</span>

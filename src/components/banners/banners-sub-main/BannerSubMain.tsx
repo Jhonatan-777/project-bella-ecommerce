@@ -42,24 +42,28 @@ export default function BannersSubMain() {
           title="Nova Coleção"
           imageAlt="Nova Coleção"
           imageSrc={bannerNewCollection}
+          position="top"
         />
         <BannerMain
           href="#"
           title="Promoções"
           imageAlt="Promoções"
           imageSrc={bannerPromotions}
+          position="center"
         />
         <BannerMain
           href="#"
           title="Edição Limitada"
           imageAlt="Edição Limitada"
           imageSrc={bannerLimitedEdition}
+          position="bottom"
         />
         <BannerMain
           href="#"
           title="Inverno Fashion"
           imageAlt="Inverno Fashion"
           imageSrc={bannerWinterFashion}
+          position="top"
         />
       </div>
     </BannersSubMainSlide>
