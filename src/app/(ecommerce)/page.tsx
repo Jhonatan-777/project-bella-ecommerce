@@ -3,6 +3,7 @@
 import BannerMain from "@/components/banners/banner-main/BannerMain";
 import BannersSubMain from "@/components/banners/banners-sub-main/BannerSubMain";
 import DiversifiedTrack from "@/components/diversified-track/range";
+import SectionNews from "@/components/sections/sections-news/SectionNews";
 import styled from "styled-components";
 
 const ContainerSections = styled.div`
@@ -15,6 +16,7 @@ export default function Home() {
       <BannerMain />
       <BannersSubMain />
       <DiversifiedTrack />
+      <SectionNews />
     </ContainerSections>
   );
 }
