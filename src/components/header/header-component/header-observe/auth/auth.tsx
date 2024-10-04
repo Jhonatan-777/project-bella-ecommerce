@@ -1,23 +1,34 @@
 // "use client";
 
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import styled from "styled-components";
 
 const ContainerHeaderAuth = styled.div`
   display: flex;
 
-  a {
+  button {
+    cursor: pointer;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.neutralColorStrong};
     font-size: ${({ theme }) => theme.fontSizes.s};
-    line-height: 20px;
+    padding: 10px 10px;
+    background: none;
+    border: none;
   }
 `;
 
 export default function HeaderAuth() {
   return (
     <ContainerHeaderAuth>
-      <Link href="#">Entrar</Link>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button>Login</button>
+        </SignInButton>
+      </SignedOut>
     </ContainerHeaderAuth>
   );
 }
