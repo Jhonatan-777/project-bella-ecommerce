@@ -50,7 +50,7 @@ export default function SectionNews() {
             className="bannerImage"
             alt="Banner da Coleção IsCool"
             src={BannerCard}
-            priority={false}
+            priority={true}
             placeholder="blur"
             width="285"
             height="493"
