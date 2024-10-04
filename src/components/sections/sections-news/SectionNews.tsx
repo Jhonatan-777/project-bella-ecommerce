@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import BannerCard from "@/app/assets/images/banners/card-banners/banner-camisa-news.png";
 
 import styled from "styled-components";
 import { flex, limitWidth } from "@/app/styles/mixins";
 
-import CartProductNew from "../../product-cart/cart-news/CartNews";
-import { products } from "@/app/assets/images/item-products/itemProducts";
+import CardProductNew from "../../product-cart/card-news/CardNews";
+import { products } from "@/data/constants/products";
 
 const ContainerSectionNews = styled.section`
   width: 100%;
@@ -40,53 +41,27 @@ const ContainerSectionNews = styled.section`
 `;
 
 export default function SectionNews() {
-  const news = products[0]?.news || [];
-
-  // Filtra os banners
-  const bannerNews = news.filter((item) => item.banner);
-
-  // Acessa o primeiro banner, se existir
-  const banner = bannerNews.length > 0 ? bannerNews[0].banner : null;
-
   return (
     <ContainerSectionNews>
       <h2 className="titleSection">Novos Produtos</h2>
       <div className="containerItems">
         <div className="bannerNewsProduct">
-          {banner && (
-            <Image
-              className="bannerImage"
-              alt={banner.imageAlt}
-              src={banner.imageSrc}
-              priority={false}
-              placeholder="blur"
-              width={banner.width}
-              height={banner.height}
-            />
-          )}
+          <Image
+            className="bannerImage"
+            alt="Banner da Coleção IsCool"
+            src={BannerCard}
+            priority={false}
+            placeholder="blur"
+            width="285"
+            height="493"
+          />
         </div>
-        {news.map((item, index) => {
-          if (item.camisas) {
-            return item.camisas.map((camisa, i) => (
-              <CartProductNew
-                key={`${index}-${i}`}
-                href={camisa.href}
-                title={camisa.title}
-                imageAlt={camisa.imageAlt}
-                imageSrc={camisa.imageSrc}
-                width={camisa.width}
-                height={camisa.height}
-                desc={camisa.desc}
-                price={camisa.price}
-                discount={camisa.discount}
-                rating={camisa.rating}
-                type={camisa.type}
-              />
-            ));
-          } else {
-            return null; // Não renderiza nada se não for um item de camisa
-          }
-        })}
+        {products
+          .filter((item) => item.emphasis === "principal") // Filtrar por emphasis "principal"
+          .slice(0, 3) // Limitar a 3 itens
+          .map((product) => (
+            <CardProductNew key={product.id} produto={product} />
+          ))}
       </div>
     </ContainerSectionNews>
   );

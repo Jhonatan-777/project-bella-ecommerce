@@ -1,26 +1,17 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 import styled from "styled-components";
 import Link from "next/link";
 import { FavoriteIcon } from "@/components/ui/icons/favorite-icon";
+import Product from "@/data/model/Product";
 
-interface CartProductNew {
-  href: string;
-  title: string;
-  desc: string;
-  price: string;
-  discount: number;
-  rating: number;
-  type: string;
-  imageAlt: string;
-  imageSrc: StaticImageData | string;
-  width: number;
-  height: number;
+interface CardProductNew {
+  produto: Product;
 }
 
-const CartProduct = styled.div`
+const CardProduct = styled.div`
   display: flex;
   border: 1px solid ${({ theme }) => theme.colors.neutralColorLight};
   border-radius: 5px;
@@ -124,21 +115,22 @@ const ProductTextContent = styled.div`
   transition: all 0.2s;
 `;
 
-export default function CartProductNew({
-  href,
-  title,
-  imageAlt,
-  imageSrc,
-  width,
-  height,
-  desc,
-  price,
-  discount,
-  rating,
-  type,
-}: CartProductNew) {
+export default function CardProductNew(props: CardProductNew) {
+  const {
+    title,
+    desc,
+    rating,
+    price,
+    href,
+    discount,
+    imageAlt,
+    imageSrc,
+    width,
+    height,
+  } = props.produto;
+
   return (
-    <CartProduct>
+    <CardProduct>
       <Link href={href} className="productLink">
         <button className="buttonFav">
           <FavoriteIcon color="#dfa2a2" />
@@ -173,6 +165,6 @@ export default function CartProductNew({
           </div>
         </ProductTextContent>
       </Link>
-    </CartProduct>
+    </CardProduct>
   );
 }
