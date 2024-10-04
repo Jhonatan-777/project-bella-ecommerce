@@ -74,7 +74,6 @@ export default function ItemDiversified({
           alt={imageAlt}
           src={imageSrc}
           priority={true}
-          placeholder="blur"
           width={width}
           height={height}
         />
