@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { ThemeProvider } from "styled-components";
 import StyledComponentsRegistry from "../lib/registry";

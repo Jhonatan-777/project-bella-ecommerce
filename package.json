@@ -12,11 +12,13 @@
     "@clerk/localizations": "^3.1.2",
     "@clerk/nextjs": "^5.7.1",
     "@prisma/client": "^5.20.0",
+    "@stripe/stripe-js": "^4.7.0",
     "next": "^14.2.14",
     "prisma": "^5.20.0",
     "project-bella-ecommerce": "file:",
     "react": "^18",
     "react-dom": "^18",
+    "stripe": "^17.1.0",
     "styled-components": "^6.1.12",
     "svix": "^1.37.0"
   },

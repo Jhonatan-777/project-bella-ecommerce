@@ -1,15 +1,14 @@
 "use client";
 
-import Image from "next/image";
-
 import styled from "styled-components";
 import Link from "next/link";
 import { FavoriteIcon } from "@/components/ui/icons/favorite-icon";
-import Product from "@/data/model/Product";
+import { ProductType } from "@/data/types/ProductType";
+import ProductImage from "../../product-image/ProductImage";
 
-interface CardProductNew {
-  produto: Product;
-}
+type CardProductProps = {
+  product: ProductType;
+};
 
 const CardProduct = styled.div`
   display: flex;
@@ -115,51 +114,30 @@ const ProductTextContent = styled.div`
   transition: all 0.2s;
 `;
 
-export default function CardProductNew(props: CardProductNew) {
-  const {
-    title,
-    desc,
-    rating,
-    price,
-    href,
-    discount,
-    imageAlt,
-    imageSrc,
-    width,
-    height,
-  } = props.produto;
-
+export default function CardProductNew({ product }: CardProductProps) {
   return (
     <CardProduct>
-      <Link href={href} className="productLink">
+      <Link href="#" className="productLink">
         <button className="buttonFav">
           <FavoriteIcon color="#dfa2a2" />
         </button>
         <div className="productDetailDiscount">
-          <p>{`${discount * 10}%`}</p>
+          <p>18%</p>
         </div>
-        <Image
-          className="productImage"
-          alt={imageAlt}
-          src={imageSrc}
-          priority={false}
-          placeholder="blur"
-          width={width}
-          height={height}
-        />
+        <ProductImage product={product} fill />
         <ProductTextContent>
           <div className="productPresentation">
-            <h3>{title}</h3>
-            <p>{desc}</p>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
             <div className="productRating">
               <p>*</p>
-              <p>{rating}</p>
+              <p>4.6</p>
             </div>
           </div>
           <div className="productAttention">
             <div className="productContainPrices">
               <p className="productDiscount">R$ 249,00</p>
-              <p className="productPrice">{price}</p>
+              <p className="productPrice">{product.price}</p>
             </div>
             <button className="buttonBuy">comprar</button>
           </div>

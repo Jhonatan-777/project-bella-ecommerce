@@ -1,10 +1,9 @@
-import Product from "../model/Product";
 import camisaFirst from "../../app/assets/images/products/camisa01.png";
 import camisaSecond from "../../app/assets/images/products/camisa02.png";
 import camisaThird from "../../app/assets/images/products/camisa03.png";
 import camisaFour from "../../app/assets/images/products/camisa04.png";
 
-export const products: Product[] = [
+export const products = [
   {
     id: 1,
     emphasis: "principal",
