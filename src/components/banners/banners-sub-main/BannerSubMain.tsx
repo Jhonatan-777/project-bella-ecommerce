@@ -7,7 +7,7 @@ import bannerWinterFashion from "@/app/assets/images/banner-winter-fashion.png";
 
 import styled from "styled-components";
 import { flex, limitWidth } from "@/app/styles/mixins";
-import BannerMain from "./CardSubMain";
+import BannerCard from "./CardSubMain";
 
 const BannersSubMainSlide = styled.section`
   width: 100%;
@@ -37,28 +37,28 @@ export default function BannersSubMain() {
   return (
     <BannersSubMainSlide>
       <div className="cardContainer">
-        <BannerMain
+        <BannerCard
           href="#"
           title="Nova Coleção"
           imageAlt="Nova Coleção"
           imageSrc={bannerNewCollection}
           position="top"
         />
-        <BannerMain
+        <BannerCard
           href="#"
           title="Promoções"
           imageAlt="Promoções"
           imageSrc={bannerPromotions}
           position="center"
         />
-        <BannerMain
+        <BannerCard
           href="#"
           title="Edição Limitada"
           imageAlt="Edição Limitada"
           imageSrc={bannerLimitedEdition}
           position="bottom"
         />
-        <BannerMain
+        <BannerCard
           href="#"
           title="Inverno Fashion"
           imageAlt="Inverno Fashion"
