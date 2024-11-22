@@ -29,8 +29,9 @@ const ContainerSectionNews = styled.section`
     width: 90%;
     ${limitWidth}
     display: flex;
-    justify-content: space-between;
-    gap: 5px;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 
     .bannerNewsProduct {
       width: 285px;
@@ -53,7 +54,10 @@ export default function SectionNews() {
             priority={true}
             placeholder="blur"
             width="285"
-            height="493"
+            height="495"
+            style={{
+              display: "block",
+            }}
           />
         </div>
         {products

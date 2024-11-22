@@ -19,7 +19,7 @@ export const theme = {
     primaryColor010: "#30706f", //green 10
     primaryColor020: "#183838", //green 20
 
-    primaryColorMoreLight: "#edf5f5", //green more light
+    primaryColorMoreLight: "#B7E9E8", //green more light
     primaryColorLight: "#86bcbb", //green light
     primaryColorStrong: "#587d7d", //green strong
     primaryColorMoreStrong: "#313a3a", //green more strong

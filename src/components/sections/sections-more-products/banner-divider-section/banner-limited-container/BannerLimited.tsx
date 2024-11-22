@@ -12,6 +12,8 @@ interface ContainerBannerLimited {
   imageAlt: string;
   imageSrc: StaticImageData | string;
   position?: string;
+  cta: string;
+  desc?: string;
 }
 
 const Container = styled.div`
@@ -33,31 +35,47 @@ const Container = styled.div`
     border-radius: 10px;
 
     cursor: pointer;
-
-    .bannerLimitedButton {
-      position: absolute;
-      left: 5%;
-      bottom: 10%;
-      font-size: ${({ theme }) => theme.fontSizes.xs};
-      text-transform: uppercase;
-      color: ${({ theme }) => theme.colors.white};
-      font-weight: 600;
-      letter-spacing: 1.5px;
-    }
   }
 `;
 
-const BannerLimitedTitle = styled.h2`
+const DescBannerLimited = styled.div`
   position: absolute;
-  left: 5%;
+  left: 10%;
   top: 10%;
-  width: 19ch;
-  line-height: 1.1;
-  z-index: 10;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  font-weight: 400;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .bannerLimitedTitle {
+    line-height: 1.1;
+    z-index: 10;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    font-weight: 600;
+    width: 19ch;
+    margin-bottom: 20px;
+  }
+
+  .bannerLimitedDesc {
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.white};
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    flex: 1;
+  }
+
+  .bannerLimitedButton {
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.white};
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    justify-self: end;
+  }
 `;
 
 export default function ContainerBannerLimited({
@@ -66,6 +84,8 @@ export default function ContainerBannerLimited({
   imageAlt,
   imageSrc,
   position,
+  cta,
+  desc,
 }: ContainerBannerLimited) {
   return (
     <Container>
@@ -81,10 +101,14 @@ export default function ContainerBannerLimited({
             height: "230px",
             objectFit: "cover",
             objectPosition: position,
+            display: "block",
           }}
         />
-        <span className="bannerLimitedButton">confira agora</span>
-        <BannerLimitedTitle>{title}</BannerLimitedTitle>
+        <DescBannerLimited>
+          <h3 className="bannerLimitedTitle">{title}</h3>
+          <p className="bannerLimitedDesc">{desc}</p>
+          <span className="bannerLimitedButton">{cta}</span>
+        </DescBannerLimited>
       </Link>
     </Container>
   );

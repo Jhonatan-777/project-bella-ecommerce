@@ -5,6 +5,7 @@ import BannersSubMain from "@/components/banners/banners-sub-main/BannerSubMain"
 import DiversifiedTrack from "@/components/diversified-track/range";
 import SectionMainProducts from "@/components/sections/sections-more-products/SectionMainProducts";
 import SectionNews from "@/components/sections/sections-news/SectionNews";
+import SectionServices from "@/components/sections/sections-services/SectionsServices";
 import styled from "styled-components";
 
 const ContainerSections = styled.div`
@@ -19,6 +20,7 @@ export default function Home() {
       <DiversifiedTrack />
       <SectionNews />
       <SectionMainProducts />
+      <SectionServices />
     </ContainerSections>
   );
 }
