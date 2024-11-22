@@ -3,6 +3,7 @@
 import BannerMain from "@/components/banners/banner-main/BannerMain";
 import BannersSubMain from "@/components/banners/banners-sub-main/BannerSubMain";
 import DiversifiedTrack from "@/components/diversified-track/range";
+import { Newsletter } from "@/components/newsletter/Newsletter";
 import SectionMainProducts from "@/components/sections/sections-more-products/SectionMainProducts";
 import SectionNews from "@/components/sections/sections-news/SectionNews";
 import SectionServices from "@/components/sections/sections-services/SectionsServices";
@@ -21,6 +22,7 @@ export default function Home() {
       <SectionNews />
       <SectionMainProducts />
       <SectionServices />
+      <Newsletter />
     </ContainerSections>
   );
 }

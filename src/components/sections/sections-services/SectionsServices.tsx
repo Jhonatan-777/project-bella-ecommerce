@@ -13,6 +13,7 @@ const ContainerServices = styled.section`
   ${flex("center", "center")};
   flex-direction: column;
   padding: 20px 0;
+  margin-bottom: 50px;
 
   .container {
     width: 90%;
