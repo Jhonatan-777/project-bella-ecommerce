@@ -10,19 +10,23 @@ const sansita = Sansita_Swashed({
   subsets: ["latin"],
 });
 
-const LogoContainer = styled.div`
+interface LogoProps {
+  color?: string;
+}
+
+const LogoContainer = styled.div<{ color?: string }>`
   font-size: ${({ theme }) => theme.fontSizes.xl};
-  color: ${({ theme }) => theme.colors.primaryColor010};
-  cursor: pointer;
+  color: ${({ color, theme }) => color || theme.colors.primaryColor010};
+  display: flex;
 
   span {
     color: ${({ theme }) => theme.colors.secondaryColor};
   }
 `;
 
-export default function Logo() {
+export default function Logo({ color }: LogoProps) {
   return (
-    <LogoContainer>
+    <LogoContainer color={color}>
       <Link href="/shop" className={sansita.className}>
         Bell<span>a</span>
       </Link>

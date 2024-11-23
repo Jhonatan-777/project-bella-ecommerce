@@ -3,6 +3,7 @@ import { Roboto_Condensed } from "next/font/google";
 import { Header } from "@/components/header/header-component/header";
 import ClientProviders from "./styles/clientProviders";
 import Pagination from "@/components/template/pagination/Pagination";
+import { Footer } from "@/components/footer/footer";
 
 const roboto = Roboto_Condensed({
   weight: ["300", "400", "500", "600", "700"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <ClientProviders>
           <Header />
           <Pagination>{children}</Pagination>
+          <Footer />
         </ClientProviders>
       </body>
     </html>
