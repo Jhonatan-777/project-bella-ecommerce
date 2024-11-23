@@ -37,7 +37,7 @@ export default function SectionServices() {
         <ContainerBannerLimited
           href="#"
           title="Chama no whats!!!"
-          imageAlt="18% off em camisas e camisetas"
+          imageAlt="banner Whats"
           imageSrc={bannerLimitedW}
           position="-100px"
           cta="contate-nos agora"

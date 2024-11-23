@@ -30,6 +30,17 @@ const NewsLetterText = styled.div`
     letter-spacing: 1.5px;
     margin-bottom: 10px;
   }
+
+  .desc {
+    font-size: ${({ theme }) => theme.fontSizes.s};
+    font-weight: 400;
+    letter-spacing: 1.1px;
+
+    .span-politica {
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  }
 `;
 
 const InputContainer = styled.div`

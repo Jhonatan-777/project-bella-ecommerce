@@ -19,7 +19,7 @@ const ContainerBD = styled.div`
     bottom: -20px;
     width: 75%;
     height: 200px;
-    background-color: ${({ theme }) => theme.colors.primaryColorMoreLight};
+    background-color: ${({ theme }) => theme.colors.primaryColor020};
   }
 
   &::after {
