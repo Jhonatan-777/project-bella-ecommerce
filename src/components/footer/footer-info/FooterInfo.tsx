@@ -48,7 +48,6 @@ export function FooterInfo() {
               alt="bandeira Visa"
               src={bandVisa}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",
@@ -62,7 +61,6 @@ export function FooterInfo() {
               alt="bandeira MasterCard"
               src={bandMaster}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",
@@ -76,7 +74,6 @@ export function FooterInfo() {
               alt="bandeira Amex"
               src={bandAmex}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",
@@ -90,7 +87,6 @@ export function FooterInfo() {
               alt="bandeira Elo"
               src={bandElo}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",
@@ -104,7 +100,6 @@ export function FooterInfo() {
               alt="bandeira Hypercard"
               src={bandHyper}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",
@@ -118,7 +113,6 @@ export function FooterInfo() {
               alt="bandeira Boleto"
               src={bandBoleto}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",
@@ -132,7 +126,6 @@ export function FooterInfo() {
               alt="bandeira Pix"
               src={bandPix}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "35px",

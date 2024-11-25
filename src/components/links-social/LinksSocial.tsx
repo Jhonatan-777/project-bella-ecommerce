@@ -33,7 +33,6 @@ export function LinksSocial() {
               alt="icon Facebook"
               src={iconFace}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "25px",
@@ -49,7 +48,6 @@ export function LinksSocial() {
               alt="icon Instagram"
               src={iconInsta}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "25px",
@@ -65,7 +63,6 @@ export function LinksSocial() {
               alt="icon Twitter"
               src={iconTwiter}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "25px",
@@ -81,7 +78,6 @@ export function LinksSocial() {
               alt="icon YouTube"
               src={iconYouTube}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "25px",
@@ -97,7 +93,6 @@ export function LinksSocial() {
               alt="icon Spotph"
               src={iconSpotph}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "25px",
@@ -113,7 +108,6 @@ export function LinksSocial() {
               alt="icon Blog"
               src={iconBlog}
               priority={false}
-              placeholder="blur"
               sizes="100vw"
               style={{
                 width: "42px",
