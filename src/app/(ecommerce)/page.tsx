@@ -16,7 +16,7 @@ export default function Home() {
       <BannerMain />
       <BannersSubMain />
       <DiversifiedTrack />
-      <SectionNews />
+      {/* <SectionNews /> */}
     </ContainerSections>
   );
 }
