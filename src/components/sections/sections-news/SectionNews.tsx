@@ -23,6 +23,9 @@ const ContainerSectionNews = styled.section`
     font-size: ${({ theme }) => theme.fontSizes.xxl};
     font-weight: 500;
     margin-bottom: 30px;
+    width: 90%;
+    text-align: center;
+    line-height: 1.1;
   }
 
   .containerItems {

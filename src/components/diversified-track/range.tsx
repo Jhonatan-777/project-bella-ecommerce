@@ -19,6 +19,10 @@ const ContainerDiversifiedTrack = styled.section`
     display: flex;
     justify-content: space-between;
     gap: 5px;
+
+    @media (max-width: 980px) {
+      display: none;
+    }
   }
 `;
 

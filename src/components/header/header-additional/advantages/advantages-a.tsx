@@ -24,11 +24,16 @@ const ContainerAdvantages = styled.div`
     width: 90%;
 
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 
     list-style: none;
+  }
+
+  @media (max-width: 400px) {
+    display: none;
   }
 `;
 

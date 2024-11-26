@@ -27,7 +27,7 @@ const LogoContainer = styled.div<{ color?: string }>`
 export default function Logo({ color }: LogoProps) {
   return (
     <LogoContainer color={color}>
-      <Link href="/shop" className={sansita.className}>
+      <Link href="/" className={sansita.className}>
         Bell<span>a</span>
       </Link>
     </LogoContainer>

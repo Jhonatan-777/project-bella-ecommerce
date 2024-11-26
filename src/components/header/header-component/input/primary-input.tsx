@@ -5,12 +5,14 @@ import { SearchIcon } from "@/components/ui/icons/search-icon";
 
 const InputContainer = styled.div`
   position: relative;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   border-radius: 5px;
 `;
 
 const PrimaryInput = styled.input`
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 
   border: 2px solid ${({ theme }) => theme.colors.neutralColor};
   border-radius: 10px;

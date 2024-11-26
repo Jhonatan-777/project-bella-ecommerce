@@ -13,6 +13,11 @@ const ContainerOffer = styled.div`
   background-color: ${({ theme }) => theme.colors.attention};
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.s};
+  text-align: center;
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
 
 export default function Offer() {

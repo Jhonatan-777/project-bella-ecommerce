@@ -9,9 +9,14 @@ import Link from "next/link";
 
 const BannerMainSlide = styled.section`
   width: 100%;
+  transition: all 0.2s;
 
   ${flex("center", "center")};
   padding: 20px 0;
+
+  @media (max-width: 980px) {
+    padding: 0;
+  }
 
   .bannerLink {
     position: relative;
@@ -37,6 +42,16 @@ const BannerMainSlide = styled.section`
       letter-spacing: 1.5px;
 
       text-align: center;
+
+      @media (max-width: 980px) {
+        padding: 10px 0;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 980px) {
+      width: 100%;
+      border-radius: 0;
     }
   }
 `;
@@ -51,6 +66,13 @@ const BannerTitle = styled.h1`
   font-family: var(--font-title);
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.xxl};
+
+  @media (max-width: 980px) {
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    bottom: 30%;
+    left: 5%;
+    width: auto;
+  }
 `;
 
 export default function BannerMain() {

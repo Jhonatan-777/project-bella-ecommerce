@@ -24,6 +24,8 @@ const ContainerHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 
   padding: 15px 0;
 `;
@@ -38,6 +40,10 @@ const ContainerSubMenu = styled.div`
   justify-content: center;
 
   padding: 10px 0;
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
 
 export function Header(props: HeaderProps) {
