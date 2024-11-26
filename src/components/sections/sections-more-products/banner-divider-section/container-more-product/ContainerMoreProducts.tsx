@@ -123,11 +123,11 @@ export default function ContainerMoreProducts({
           </TextBannerMore>
         </div>
         {products
-          .filter((item) => item.emphasis === "secondary") // Filtrar por emphasis "principal"
-          .slice(0, 7) // Limitar a X itens
-          .map((product) => (
-            <CardProduct key={product.id} produto={product} />
-          ))}
+          .filter((item) => item.emphasis === "secondary")
+          .slice(0, 7)
+          .map((product) =>
+            product ? <CardProduct key={product.id} product={product} /> : null
+          )}
       </div>
     </ContainerProducts>
   );
