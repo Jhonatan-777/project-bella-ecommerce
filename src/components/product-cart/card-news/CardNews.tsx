@@ -8,7 +8,7 @@ import { FavoriteIcon } from "@/components/ui/icons/favorite-icon";
 import Product from "@/data/model/Product";
 
 interface CardProductNew {
-  produto: Product;
+  product: Product;
 }
 
 const CardProduct = styled.div`
@@ -115,23 +115,23 @@ const ProductTextContent = styled.div`
   transition: all 0.2s;
 `;
 
-export default function CardProductNew(props: CardProductNew) {
+export default function CardProductNew({ product }: CardProductNew) {
   const {
+    id,
     title,
     desc,
     rating,
     price,
-    href,
     discount,
     imageAlt,
     imageSrc,
     width,
     height,
-  } = props.produto;
+  } = product;
 
   return (
     <CardProduct>
-      <Link href={href} className="productLink">
+      <Link href={`/product/${id}`} className="productLink">
         <button className="buttonFav">
           <FavoriteIcon color="#dfa2a2" />
         </button>

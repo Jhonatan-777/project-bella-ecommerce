@@ -115,12 +115,12 @@ export default function ContainerMoreProducts({
                 display: "block",
               }}
             />
+            <TextBannerMore>
+              <h3 className="titleBanner">{titleBanner}</h3>
+              <p className="descriptionBanner">{desc}</p>
+              <p className="ctaBanner">Confira Agora</p>
+            </TextBannerMore>
           </Link>
-          <TextBannerMore>
-            <h3 className="titleBanner">{titleBanner}</h3>
-            <p className="descriptionBanner">{desc}</p>
-            <p className="ctaBanner">Confira Agora</p>
-          </TextBannerMore>
         </div>
         {products
           .filter((item) => item.emphasis === "secondary")

@@ -8,6 +8,7 @@ import { flex, limitWidth } from "@/app/styles/mixins";
 
 import CardProductNew from "../../product-cart/card-news/CardNews";
 import { products } from "@/data/constants/products";
+import Link from "next/link";
 
 const ContainerSectionNews = styled.section`
   width: 100%;
@@ -49,7 +50,7 @@ export default function SectionNews() {
     <ContainerSectionNews>
       <h2 className="titleSection">Novos Produtos</h2>
       <div className="containerItems">
-        <div className="bannerNewsProduct">
+        <Link href="#" className="bannerNewsProduct">
           <Image
             className="bannerImage"
             alt="Banner da Coleção IsCool"
@@ -62,13 +63,15 @@ export default function SectionNews() {
               display: "block",
             }}
           />
-        </div>
+        </Link>
         {products
           .filter((item) => item.emphasis === "principal") // Filtrar por emphasis "principal"
           .slice(0, 3) // Limitar a 3 itens
-          .map((product) => (
-            <CardProductNew key={product.id} produto={product} />
-          ))}
+          .map((product) =>
+            product ? (
+              <CardProductNew key={product.id} product={product} />
+            ) : null
+          )}
       </div>
     </ContainerSectionNews>
   );
