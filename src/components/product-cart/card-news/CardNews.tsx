@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { FavoriteIcon } from "@/components/ui/icons/favorite-icon";
 import Product from "@/data/model/Product";
+import { AddToCartButton } from "@/components/ui/button/AddToCartButton";
 
 interface CardProductNew {
   product: Product;
@@ -161,7 +162,7 @@ export default function CardProductNew({ product }: CardProductNew) {
               <p className="productDiscount">R$ 249,00</p>
               <p className="productPrice">{price}</p>
             </div>
-            <button className="buttonBuy">comprar</button>
+            <AddToCartButton product={product} quantity={1} />
           </div>
         </ProductTextContent>
       </Link>

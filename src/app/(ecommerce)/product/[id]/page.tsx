@@ -2,7 +2,12 @@
 
 import { flex, limitWidth } from "@/app/styles/mixins";
 import { products } from "@/data/constants/products";
+import { useCart } from "@/data/contexts/CartContext";
+import { useLocalStorage } from "@/data/hooks/useLocalStorage";
+import Product from "@/data/model/Product";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 import styled from "styled-components";
 
 type ProductPageProps = {
@@ -282,16 +287,25 @@ const ContainerCor = styled.div`
   }
 `;
 
-function getProductById(id: number) {
-  return products.find((product) => product.id === id);
+function getProductById(id: number): Product | undefined {
+  return products.find((product) => Number(product.id) === id);
 }
 
 export default function ProductPage({ params: { id } }: ProductPageProps) {
   const product = getProductById(Number(id));
+  const { addToCart } = useCart();
+  const [amount, setAmount] = useState(1);
 
   if (!product) {
     return <div>Produto não encontrado.</div>;
   }
+
+  const handleAddToCart = () => {
+    addToCart({
+      ...product, // Passa as informações do produto
+      quantity: amount, // Adiciona a quantidade
+    });
+  };
 
   return (
     <ContainerProduct>
@@ -363,12 +377,23 @@ export default function ProductPage({ params: { id } }: ProductPageProps) {
             </ContainerCor>
             <div className="containerButtons">
               <div className="containBtnAmount">
-                <button className="btnAmount">-</button>
-                <p className="numberAmount">1</p>
-                <button className="btnAmount">+</button>
+                <p
+                  className="btnAmount"
+                  onClick={() => setAmount(amount - 1 > 0 ? amount - 1 : 1)}
+                >
+                  -
+                </p>
+                <p className="numberAmount">{amount}</p>
+                <p className="btnAmount" onClick={() => setAmount(amount + 1)}>
+                  +
+                </p>
               </div>
-              <button className="btn">Add ao Carrinho</button>
-              <button className="btn">Add ao Favoritos</button>
+              <button type="button" className="btn" onClick={handleAddToCart}>
+                Adicionar ao Carrinho
+              </button>
+              <Link href="/logger" className="btn">
+                Add ao Favoritos
+              </Link>
             </div>
           </form>
         </InfoProduct>

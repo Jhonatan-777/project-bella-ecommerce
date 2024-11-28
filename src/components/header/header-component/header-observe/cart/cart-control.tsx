@@ -1,5 +1,5 @@
 import { CartIcon } from "@/components/ui/icons/cart-icon";
-import { useLocalStorage } from "@/data/hooks/useLocalStorage";
+import { useCart } from "@/data/contexts/CartContext";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -30,7 +30,7 @@ const CartCount = styled.span`
 `;
 
 export function CartControl() {
-  const [value] = useLocalStorage<string[]>("cart-items", []);
+  const { cartItems } = useCart();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,14 +38,19 @@ export function CartControl() {
   }, []);
 
   if (!mounted) {
-    // Evita renderizar no lado do servidor
     return null;
   }
+
+  const totalItems = cartItems.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 
   return (
     <Container>
       <CartIcon />
-      {value.length > 0 && <CartCount>{value.length}</CartCount>}
+      {totalItems > 0 && <CartCount>{totalItems}</CartCount>}
+      {/* Aqui você pode adicionar um botão para testar a adição de itens */}
     </Container>
   );
 }
