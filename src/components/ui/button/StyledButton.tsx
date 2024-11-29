@@ -22,11 +22,6 @@ const StyledButton = styled.button`
     box-shadow: 0 0 5px rgba(90, 90, 90, 0.5);
   }
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(90, 90, 90, 0.5);
-  }
-
   &:active {
     background-color: ${({ theme }) => theme.colors.neutralColorLight};
   }

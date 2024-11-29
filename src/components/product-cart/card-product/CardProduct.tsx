@@ -18,6 +18,7 @@ const Card = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.neutralColorLight};
   border-radius: 5px;
   overflow: hidden;
+  transition: all 0.2s;
 
   .productLink {
     position: relative;
@@ -43,6 +44,10 @@ const Card = styled.div`
       top: 20px;
       right: 20px;
     }
+  }
+
+  &:hover {
+    box-shadow: 2px 2px 3px 1px rgba(119, 119, 119, 0.6);
   }
 `;
 
