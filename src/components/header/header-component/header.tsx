@@ -8,8 +8,8 @@ import Offer from "../header-additional/offer/offer-a";
 import PrimaryInputSearch from "./input/primary-input";
 import ObserveRegister from "./header-observe/headerObserve";
 import SubMenu from "../header-menu/header-sub-menu";
-
-interface HeaderProps {}
+import { flex } from "@/app/styles/mixins";
+import { useEffect, useState } from "react";
 
 const TagHeader = styled.header`
   width: 100%;
@@ -20,14 +20,29 @@ const TagHeader = styled.header`
 `;
 
 const ContainerHeader = styled.div`
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  width: 100%;
+  ${flex("center", "center")};
+  background-color: ${({ theme }) => theme.colors.white};
+  transition: all 0.3s ease;
 
-  padding: 15px 0;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    box-shadow: 0 2px 4px 2px rgba(61, 61, 61, 0.6);
+  }
+
+  .container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    padding: 15px 0;
+  }
 `;
 
 const ContainerSubMenu = styled.div`
@@ -46,16 +61,45 @@ const ContainerSubMenu = styled.div`
   }
 `;
 
-export function Header(props: HeaderProps) {
+export function Header() {
+  const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <TagHeader>
       <Offer />
       <Advantages />
       <ContainerHeader>
-        <Logo />
-        <PrimaryInputSearch />
-        <ObserveRegister />
+        <div className="container">
+          <Logo />
+          <PrimaryInputSearch />
+          <ObserveRegister />
+        </div>
       </ContainerHeader>
+      {isFixed && (
+        <ContainerHeader className={isFixed ? "fixed" : ""}>
+          <div className="container">
+            <Logo />
+            <PrimaryInputSearch />
+            <ObserveRegister />
+          </div>
+        </ContainerHeader>
+      )}
 
       <ContainerSubMenu>
         <SubMenu />

@@ -19,6 +19,7 @@ const ContainerHeaderCart = styled.div`
     background-color: transparent;
 
     cursor: pointer;
+    font-family: inherit;
   }
 
   .cart-overlay {
@@ -75,115 +76,131 @@ const ContainerHeaderCart = styled.div`
     .cart-container {
       width: 100%;
       flex: 1;
+      position: relative;
 
-      .cart {
+      .list-item {
+        height: calc(100% - 100px);
+        overflow-y: auto;
         display: flex;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        gap: 1px;
 
-        .image-item {
-          width: 100px;
-          height: 100px;
-          background-color: gray;
-        }
-
-        .desc-item {
-          position: relative;
-          flex-grow: 1;
-          padding: 10px;
+        .cart {
           display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+          border: 1px solid rgba(0, 0, 0, 0.2);
 
-          .title-item {
-            letter-spacing: 1px;
-            text-transform: capitalize;
-            color: ${({ theme }) => theme.colors.black};
-            font-size: ${({ theme }) => theme.fontSizes.m};
-            font-weight: 400;
+          .image-item {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
           }
 
-          .numbers-item {
-            width: 100%;
+          .desc-item {
+            position: relative;
+            flex-grow: 1;
+            padding: 10px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: space-between;
 
-            .quantity-item {
-              display: flex;
-              border: 1px solid ${({ theme }) => theme.colors.neutralColorLight};
-              border-radius: 4px;
-              background-color: transparent;
+            .title-item {
+              letter-spacing: 1px;
+              text-transform: capitalize;
+              color: ${({ theme }) => theme.colors.black};
+              font-size: ${({ theme }) => theme.fontSizes.m};
+              font-weight: 400;
+            }
 
-              button,
-              p {
-                color: ${({ theme }) => theme.colors.black};
-                font-size: ${({ theme }) => theme.fontSizes.m};
-                font-weight: 400;
-                padding: 10px;
-                border: none;
+            .numbers-item {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .quantity-item {
+                display: flex;
+                border: 1px solid
+                  ${({ theme }) => theme.colors.neutralColorLight};
+                border-radius: 4px;
                 background-color: transparent;
 
-                &.quantity-modify {
-                  cursor: pointer;
+                button,
+                p {
+                  color: ${({ theme }) => theme.colors.black};
+                  font-size: ${({ theme }) => theme.fontSizes.m};
+                  font-weight: 400;
+                  padding: 10px;
+                  border: none;
+                  background-color: transparent;
+
+                  &.quantity-modify {
+                    cursor: pointer;
+                  }
                 }
+              }
+
+              .price-item {
+                color: ${({ theme }) => theme.colors.black};
+                font-size: ${({ theme }) => theme.fontSizes.l};
+                font-weight: 400;
               }
             }
 
-            .price-item {
-              color: ${({ theme }) => theme.colors.black};
-              font-size: ${({ theme }) => theme.fontSizes.l};
-              font-weight: 400;
+            .remove-btn {
+              width: 20px;
+              height: 20px;
+              ${flex("center", "center")};
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              font-size: 20px;
+              cursor: pointer;
+              background-color: ${({ theme }) =>
+                theme.colors.secondaryColorLight};
+              border: none;
+
+              &:hover {
+                background-color: ${({ theme }) =>
+                  theme.colors.secondaryColorStrong};
+              }
             }
           }
+        }
+      }
 
-          .remove-btn {
-            width: 20px;
-            height: 20px;
-            ${flex("center", "center")};
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            cursor: pointer;
-            background-color: ${({ theme }) =>
-              theme.colors.secondaryColorLight};
-            border: none;
+      .container-btn {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 4px 2px rgba(61, 61, 61, 0.6);
+
+        .btn {
+          display: flex;
+          text-transform: uppercase;
+          width: 100%;
+          padding: 15px 10px;
+          color: ${({ theme }) => theme.colors.black};
+          font-size: ${({ theme }) => theme.fontSizes.m};
+          font-weight: 400;
+          transition: all 0.2s;
+
+          &.btn-continuar {
+            background-color: ${({ theme }) => theme.colors.primaryColorLight};
 
             &:hover {
-              background-color: ${({ theme }) =>
-                theme.colors.secondaryColorStrong};
+              color: ${({ theme }) => theme.colors.white};
+              background-color: ${({ theme }) => theme.colors.primaryColor010};
             }
           }
-        }
-      }
 
-      .btn {
-        display: flex;
-        justify-self: flex-end;
-        text-transform: uppercase;
-        width: 100%;
-        text-align: center;
-        padding: 15px 10px;
-        color: ${({ theme }) => theme.colors.black};
-        font-size: ${({ theme }) => theme.fontSizes.m};
-        font-weight: 400;
-        transition: all 0.2s;
-      }
+          &.btn-finalizar {
+            background-color: ${({ theme }) =>
+              theme.colors.secondaryColorLight};
 
-      .btn-continuar {
-        background-color: ${({ theme }) => theme.colors.primaryColorLight};
-
-        &:hover {
-          color: ${({ theme }) => theme.colors.white};
-          background-color: ${({ theme }) => theme.colors.primaryColorStrong};
-        }
-      }
-
-      .btn-finalizar {
-        background-color: ${({ theme }) => theme.colors.secondaryColorLight};
-
-        &:hover {
-          background-color: ${({ theme }) => theme.colors.secondaryColor};
+            &:hover {
+              background-color: ${({ theme }) => theme.colors.secondaryColor};
+            }
+          }
         }
       }
     }
@@ -253,88 +270,94 @@ export default function HeaderCart() {
             {cartItems.length === 0 ? (
               <div className="cart-container">
                 <p className="aviso">Sua sacola está vazia.</p>
-                <Link
-                  className="btn btn-continuar"
-                  href="/"
-                  onClick={closeCart}
-                >
-                  Continuar Comprando
-                </Link>
+                <div className="container-btn">
+                  <Link
+                    className="btn btn-continuar"
+                    href="/"
+                    onClick={closeCart}
+                  >
+                    Continuar Comprando
+                  </Link>
+                </div>
               </div>
             ) : (
               <div className="cart-container">
-                {cartItems.map((item, index) => (
-                  <div className="cart" key={index}>
-                    <div className="image-item">
-                      <Image
-                        className="productImage"
-                        alt={item.imageAlt}
-                        src={item.imageSrc}
-                        priority={false}
-                        placeholder="blur"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          display: "block",
-                        }}
-                      />
-                    </div>
-                    <div className="desc-item">
-                      <h3 className="title-item">{item.title}</h3>
-                      <div className="numbers-item">
-                        <div className="quantity-item">
-                          <button
-                            className="quantity-modify"
-                            onClick={() =>
-                              handleDecreaseQuantity(item.id, item.quantity)
-                            }
-                          >
-                            -
-                          </button>
-                          <p>{item.quantity}</p>
-                          <button
-                            className="quantity-modify"
-                            onClick={() =>
-                              handleIncreaseQuantity(item.id, item.quantity)
-                            }
-                          >
-                            +
-                          </button>
-                        </div>
-                        <p className="price-item">
-                          R$
-                          {(
-                            parseFloat(
-                              item.price.replace("R$", "").replace(",", ".")
-                            ) * item.quantity
-                          ).toFixed(2)}
-                        </p>
+                <div className="list-item">
+                  {cartItems.map((item, index) => (
+                    <div className="cart" key={index}>
+                      <div className="image-item">
+                        <Image
+                          className="productImage"
+                          alt={item.imageAlt}
+                          src={item.imageSrc}
+                          priority={false}
+                          placeholder="blur"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
                       </div>
+                      <div className="desc-item">
+                        <h3 className="title-item">{item.title}</h3>
+                        <div className="numbers-item">
+                          <div className="quantity-item">
+                            <button
+                              className="quantity-modify"
+                              onClick={() =>
+                                handleDecreaseQuantity(item.id, item.quantity)
+                              }
+                            >
+                              -
+                            </button>
+                            <p>{item.quantity}</p>
+                            <button
+                              className="quantity-modify"
+                              onClick={() =>
+                                handleIncreaseQuantity(item.id, item.quantity)
+                              }
+                            >
+                              +
+                            </button>
+                          </div>
+                          <p className="price-item">
+                            R$
+                            {(
+                              parseFloat(
+                                item.price.replace("R$", "").replace(",", ".")
+                              ) * item.quantity
+                            ).toFixed(2)}
+                          </p>
+                        </div>
 
-                      <button
-                        className="remove-btn"
-                        onClick={() => handleRemoveItem(item.id)}
-                      >
-                        &times;
-                      </button>
+                        <button
+                          className="remove-btn"
+                          onClick={() => handleRemoveItem(item.id)}
+                        >
+                          &times;
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
-                <Link
-                  className="btn btn-continuar"
-                  href="/"
-                  onClick={closeCart}
-                >
-                  Continuar Comprando
-                </Link>
-                <Link
-                  className="btn btn-finalizar"
-                  href="/login"
-                  onClick={closeCart}
-                >
-                  Finalizar Compra
-                </Link>
+                  ))}
+                </div>
+                <div className="container-btn">
+                  <Link
+                    className="btn btn-continuar"
+                    href="/"
+                    onClick={closeCart}
+                  >
+                    Continuar Comprando
+                  </Link>
+                  <Link
+                    className="btn btn-finalizar"
+                    href="/login"
+                    onClick={closeCart}
+                  >
+                    Finalizar Compra
+                  </Link>
+                </div>
               </div>
             )}
           </div>

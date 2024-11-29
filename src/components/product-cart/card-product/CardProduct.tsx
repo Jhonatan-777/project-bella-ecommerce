@@ -64,6 +64,9 @@ const ProductTextContent = styled.div`
       letter-spacing: 1.2px;
       color: ${({ theme }) => theme.colors.neutralColor};
       font-size: ${({ theme }) => theme.fontSizes.xs};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .productRating {
