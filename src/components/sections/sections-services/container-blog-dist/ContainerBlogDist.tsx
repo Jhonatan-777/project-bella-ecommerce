@@ -74,7 +74,6 @@ export default function ContainerBlogDist() {
           <Image
             alt="Blog Bella"
             src={bannerBlog}
-            priority={true}
             placeholder="blur"
             style={{
               width: "100%",
@@ -91,7 +90,6 @@ export default function ContainerBlogDist() {
           <Image
             alt="Seja uma Distribuidora"
             src={bannerDist}
-            priority={true}
             placeholder="blur"
             style={{
               width: "100%",

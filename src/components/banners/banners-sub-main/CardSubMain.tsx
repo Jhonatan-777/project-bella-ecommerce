@@ -28,6 +28,16 @@ const Card = styled.div`
     border-radius: 10px;
 
     cursor: pointer;
+    transition: all 0.2s;
+
+    .imageBanner {
+      transform: scale(1.1);
+      transition: all 0.2s;
+    }
+
+    &:hover .imageBanner {
+      transform: scale(1);
+    }
 
     .bannerCardButton {
       position: absolute;
@@ -65,6 +75,7 @@ export default function CardSubMain({
     <Card>
       <Link href={href} className="bannerCardLink">
         <Image
+          className="imageBanner"
           alt={imageAlt}
           src={imageSrc}
           priority={true}
