@@ -76,6 +76,10 @@ const InputCadastro = styled.input`
       background-color: ${({ theme }) => theme.colors.primaryColor010};
     }
   }
+
+  @media (max-width: 670px) {
+    padding: 10px 160px 10px 20px;
+  }
 `;
 
 const SearchBtn = styled.button`
@@ -102,6 +106,10 @@ const SearchBtn = styled.button`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   letter-spacing: 1.5px;
+
+  @media (max-width: 670px) {
+    padding: 13px 30px;
+  }
 `;
 
 export function Newsletter() {

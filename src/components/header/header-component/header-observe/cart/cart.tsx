@@ -1,5 +1,6 @@
 import { useCart } from "@/data/contexts/CartContext";
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import { CartControl } from "./cart-control";
@@ -37,19 +38,20 @@ const ContainerHeaderCart = styled.div`
     background: white;
     width: 400px;
     height: 100vh;
-    border-radius: 8px;
     overflow-y: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     .title {
       text-align: center;
       padding: 20px;
       letter-spacing: 1px;
       text-transform: capitalize;
-      color: ${({ theme }) => theme.colors.black};
+      color: ${({ theme }) => theme.colors.white};
       font-size: ${({ theme }) => theme.fontSizes.l};
       font-weight: 700;
-      background-color: ${({ theme }) => theme.colors.secondaryColorLight};
+      background-color: ${({ theme }) => theme.colors.attention};
     }
 
     .subtitle {
@@ -59,10 +61,20 @@ const ContainerHeaderCart = styled.div`
       color: ${({ theme }) => theme.colors.black};
       font-size: ${({ theme }) => theme.fontSizes.m};
       font-weight: 400;
+      background-color: ${({ theme }) => theme.colors.bgInput};
+    }
+
+    .aviso {
+      padding: 10px;
+      letter-spacing: 1px;
+      color: ${({ theme }) => theme.colors.black};
+      font-size: ${({ theme }) => theme.fontSizes.m};
+      font-weight: 400;
     }
 
     .cart-container {
       width: 100%;
+      flex: 1;
 
       .cart {
         display: flex;
@@ -144,6 +156,36 @@ const ContainerHeaderCart = styled.div`
           }
         }
       }
+
+      .btn {
+        display: flex;
+        justify-self: flex-end;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+        padding: 15px 10px;
+        color: ${({ theme }) => theme.colors.black};
+        font-size: ${({ theme }) => theme.fontSizes.m};
+        font-weight: 400;
+        transition: all 0.2s;
+      }
+
+      .btn-continuar {
+        background-color: ${({ theme }) => theme.colors.primaryColorLight};
+
+        &:hover {
+          color: ${({ theme }) => theme.colors.white};
+          background-color: ${({ theme }) => theme.colors.primaryColorStrong};
+        }
+      }
+
+      .btn-finalizar {
+        background-color: ${({ theme }) => theme.colors.secondaryColorLight};
+
+        &:hover {
+          background-color: ${({ theme }) => theme.colors.secondaryColor};
+        }
+      }
     }
   }
 
@@ -209,13 +251,34 @@ export default function HeaderCart() {
             <h2 className="title">Minha Sacola</h2>
             <p className="subtitle">Meus Produtos</p>
             {cartItems.length === 0 ? (
-              <p>Sua sacola está vazia.</p>
+              <div className="cart-container">
+                <p className="aviso">Sua sacola está vazia.</p>
+                <Link
+                  className="btn btn-continuar"
+                  href="/"
+                  onClick={closeCart}
+                >
+                  Continuar Comprando
+                </Link>
+              </div>
             ) : (
               <div className="cart-container">
                 {cartItems.map((item, index) => (
                   <div className="cart" key={index}>
                     <div className="image-item">
-                      <div>img</div>
+                      <Image
+                        className="productImage"
+                        alt={item.imageAlt}
+                        src={item.imageSrc}
+                        priority={false}
+                        placeholder="blur"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
                     </div>
                     <div className="desc-item">
                       <h3 className="title-item">{item.title}</h3>
@@ -240,6 +303,7 @@ export default function HeaderCart() {
                           </button>
                         </div>
                         <p className="price-item">
+                          R$
                           {(
                             parseFloat(
                               item.price.replace("R$", "").replace(",", ".")
@@ -257,9 +321,22 @@ export default function HeaderCart() {
                     </div>
                   </div>
                 ))}
+                <Link
+                  className="btn btn-continuar"
+                  href="/"
+                  onClick={closeCart}
+                >
+                  Continuar Comprando
+                </Link>
+                <Link
+                  className="btn btn-finalizar"
+                  href="/login"
+                  onClick={closeCart}
+                >
+                  Finalizar Compra
+                </Link>
               </div>
             )}
-            <Link href="/logger">Finalizar Compra</Link>
           </div>
         </div>
       )}

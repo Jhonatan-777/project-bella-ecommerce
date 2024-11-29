@@ -391,7 +391,7 @@ export default function ProductPage({ params: { id } }: ProductPageProps) {
               <button type="button" className="btn" onClick={handleAddToCart}>
                 Adicionar ao Carrinho
               </button>
-              <Link href="/logger" className="btn">
+              <Link href="/login" className="btn">
                 Add ao Favoritos
               </Link>
             </div>

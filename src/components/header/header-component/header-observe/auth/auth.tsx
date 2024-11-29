@@ -17,7 +17,7 @@ const ContainerHeaderAuth = styled.div`
 export default function HeaderAuth() {
   return (
     <ContainerHeaderAuth>
-      <Link href="#">Entrar</Link>
+      <Link href="/login">Entrar</Link>
     </ContainerHeaderAuth>
   );
 }
