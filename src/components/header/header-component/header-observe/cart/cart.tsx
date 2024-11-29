@@ -39,7 +39,6 @@ const ContainerHeaderCart = styled.div`
     background: white;
     width: 400px;
     height: 100vh;
-    overflow-y: auto;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -76,10 +75,10 @@ const ContainerHeaderCart = styled.div`
     .cart-container {
       width: 100%;
       flex: 1;
-      position: relative;
+      height: calc(100% - 180px);
 
       .list-item {
-        height: calc(100% - 100px);
+        height: calc(100% - 180px);
         overflow-y: auto;
         display: flex;
         flex-direction: column;
@@ -109,6 +108,7 @@ const ContainerHeaderCart = styled.div`
               color: ${({ theme }) => theme.colors.black};
               font-size: ${({ theme }) => theme.fontSizes.m};
               font-weight: 400;
+              display: contents;
             }
 
             .numbers-item {
@@ -168,37 +168,67 @@ const ContainerHeaderCart = styled.div`
         }
       }
 
-      .container-btn {
+      .container-resume {
         position: absolute;
         bottom: 0;
         width: 100%;
         box-shadow: 0 -2px 4px 2px rgba(61, 61, 61, 0.6);
+        background-color: ${({ theme }) => theme.colors.primaryColorMoreLight};
 
-        .btn {
+        .info-compras {
           display: flex;
-          text-transform: uppercase;
-          width: 100%;
-          padding: 15px 10px;
-          color: ${({ theme }) => theme.colors.black};
-          font-size: ${({ theme }) => theme.fontSizes.m};
-          font-weight: 400;
-          transition: all 0.2s;
+          flex-direction: column;
+          gap: 10px;
+          padding: 10px;
+          padding-bottom: 20px;
 
-          &.btn-continuar {
-            background-color: ${({ theme }) => theme.colors.primaryColorLight};
+          .info-paragraph {
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            color: ${({ theme }) => theme.colors.black};
+            font-size: ${({ theme }) => theme.fontSizes.m};
+            font-weight: 400;
+            display: flex;
+            justify-content: space-between;
 
-            &:hover {
-              color: ${({ theme }) => theme.colors.white};
-              background-color: ${({ theme }) => theme.colors.primaryColor010};
+            .info-span {
+              font-size: ${({ theme }) => theme.fontSizes.m};
+              font-weight: 600;
             }
           }
+        }
 
-          &.btn-finalizar {
-            background-color: ${({ theme }) =>
-              theme.colors.secondaryColorLight};
+        .container-btn {
+          width: 100%;
 
-            &:hover {
-              background-color: ${({ theme }) => theme.colors.secondaryColor};
+          .btn {
+            display: flex;
+            text-transform: uppercase;
+            width: 100%;
+            padding: 15px 10px;
+            color: ${({ theme }) => theme.colors.black};
+            font-size: ${({ theme }) => theme.fontSizes.m};
+            font-weight: 400;
+            transition: all 0.2s;
+
+            &.btn-continuar {
+              background-color: ${({ theme }) =>
+                theme.colors.primaryColorLight};
+
+              &:hover {
+                color: ${({ theme }) => theme.colors.white};
+                background-color: ${({ theme }) =>
+                  theme.colors.primaryColor010};
+              }
+            }
+
+            &.btn-finalizar {
+              background-color: ${({ theme }) =>
+                theme.colors.secondaryColorLight};
+
+              &:hover {
+                background-color: ${({ theme }) => theme.colors.secondaryColor};
+              }
             }
           }
         }
@@ -270,14 +300,16 @@ export default function HeaderCart() {
             {cartItems.length === 0 ? (
               <div className="cart-container">
                 <p className="aviso">Sua sacola está vazia.</p>
-                <div className="container-btn">
-                  <Link
-                    className="btn btn-continuar"
-                    href="/"
-                    onClick={closeCart}
-                  >
-                    Continuar Comprando
-                  </Link>
+                <div className="container-resume">
+                  <div className="container-btn">
+                    <Link
+                      className="btn btn-continuar"
+                      href="/"
+                      onClick={closeCart}
+                    >
+                      Continuar Comprando
+                    </Link>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -301,7 +333,13 @@ export default function HeaderCart() {
                         />
                       </div>
                       <div className="desc-item">
-                        <h3 className="title-item">{item.title}</h3>
+                        <Link
+                          href={`/product/${item.id}`}
+                          className="title-item"
+                          onClick={closeCart}
+                        >
+                          {item.title}
+                        </Link>
                         <div className="numbers-item">
                           <div className="quantity-item">
                             <button
@@ -342,21 +380,51 @@ export default function HeaderCart() {
                     </div>
                   ))}
                 </div>
-                <div className="container-btn">
-                  <Link
-                    className="btn btn-continuar"
-                    href="/"
-                    onClick={closeCart}
-                  >
-                    Continuar Comprando
-                  </Link>
-                  <Link
-                    className="btn btn-finalizar"
-                    href="/login"
-                    onClick={closeCart}
-                  >
-                    Finalizar Compra
-                  </Link>
+                <div className="container-resume">
+                  <div className="info-compras">
+                    <p className="info-paragraph">
+                      Total de Itens:{" "}
+                      <span className="info-span">
+                        {cartItems.reduce(
+                          (acc, item) => acc + item.quantity,
+                          0
+                        )}
+                      </span>
+                    </p>
+                    <p className="info-paragraph">
+                      Valor Total:
+                      <span className="info-span">
+                        R${" "}
+                        {cartItems
+                          .reduce(
+                            (acc, item) =>
+                              acc +
+                              parseFloat(
+                                item.price.replace("R$", "").replace(",", ".")
+                              ) *
+                                item.quantity,
+                            0
+                          )
+                          .toFixed(2)}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="container-btn">
+                    <Link
+                      className="btn btn-continuar"
+                      href="/"
+                      onClick={closeCart}
+                    >
+                      Continuar Comprando
+                    </Link>
+                    <Link
+                      className="btn btn-finalizar"
+                      href="/login"
+                      onClick={closeCart}
+                    >
+                      Finalizar Compra
+                    </Link>
+                  </div>
                 </div>
               </div>
             )}

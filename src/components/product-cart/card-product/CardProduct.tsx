@@ -134,6 +134,11 @@ export default function CardProduct({ product }: CardProductProps) {
     height,
   } = product;
 
+  const handleAddToCartClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Impede o redirecionamento do link
+    e.stopPropagation(); // Evita a propagação para o link pai
+  };
+
   return (
     <Card>
       <Link href={`/product/${id}`} className="productLink">
@@ -166,7 +171,9 @@ export default function CardProduct({ product }: CardProductProps) {
               <p className="productDiscount">R$ 249,00</p>
               <p className="productPrice">{price}</p>
             </div>
-            <AddToCartButton product={product} quantity={1} />
+            <div onClick={handleAddToCartClick}>
+              <AddToCartButton product={product} quantity={1} />
+            </div>
           </div>
         </ProductTextContent>
       </Link>
